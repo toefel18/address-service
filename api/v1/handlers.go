@@ -4,7 +4,6 @@ import (
 	"github.com/gin-gonic/gin"
 	"github.com/toefel18/address-service/geodan"
 	"net/http"
-    "fmt"
 )
 
 type KixcodeAndType struct {
