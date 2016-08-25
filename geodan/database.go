@@ -46,7 +46,7 @@ func (address Address) Kixcode() string {
 }
 
 func (address Address) Type() string {
-	if address.fields[address.db.Headers["gebrksdoel"]] == "woonfunctie" {
+	if address.GetField("gebrksdoel") == "woonfunctie" {
 		return CUSTOMER
 	} else {
 		return BUSINESS
