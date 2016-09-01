@@ -9,16 +9,16 @@ import (
 const BUSINESS = "2B"
 const CUSTOMER = "2C"
 
-type GeodanDB struct {
+type CsvExtract struct {
 	Headers   map[string]int
 	Addresses []Address
 }
 
-func NewDatabase() *GeodanDB {
-	return &GeodanDB{Headers: make(map[string]int)}
+func NewDatabase() *CsvExtract {
+	return &CsvExtract{Headers: make(map[string]int)}
 }
 
-func (db *GeodanDB) FindByKixcode(kixcode string) (Address, error) {
+func (db *CsvExtract) FindByKixcode(kixcode string) (Address, error) {
 	for _, address := range db.Addresses {
 		if address.Kixcode() == kixcode {
 			return address, nil
@@ -27,14 +27,14 @@ func (db *GeodanDB) FindByKixcode(kixcode string) (Address, error) {
 	return Address{}, errors.New(kixcode + "not found")
 }
 
-func (db *GeodanDB) Append(address Address) {
+func (db *CsvExtract) Append(address Address) {
 	address.db = db
 	db.Addresses = append(db.Addresses, address)
 }
 
 type Address struct {
 	fields []string
-	db     *GeodanDB
+	db     *CsvExtract
 }
 
 func (address Address) Kixcode() string {
@@ -56,3 +56,5 @@ func (address Address) Type() string {
 func (address Address) GetField(fieldName string) string {
 	return address.fields[address.db.Headers[fieldName]]
 }
+
+

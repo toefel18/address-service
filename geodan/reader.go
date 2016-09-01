@@ -9,7 +9,7 @@ import (
 	"time"
 )
 
-func CreateFromFile(filename string) *GeodanDB {
+func CreateFromFile(filename string) *CsvExtract {
 	log.Print("Reading GEODAN file")
 	start := time.Now()
 
@@ -22,7 +22,7 @@ func CreateFromFile(filename string) *GeodanDB {
     return CreateFromReader(file)
 }
 
-func CreateFromReader(reader io.Reader) * GeodanDB {
+func CreateFromReader(reader io.Reader) *CsvExtract {
     csvReader := csv.NewReader(bufio.NewReader(reader))
     csvReader.Comma = ';'
     db := NewDatabase()
@@ -30,12 +30,12 @@ func CreateFromReader(reader io.Reader) * GeodanDB {
     return db
 }
 
-func readIntoDatabase(db *GeodanDB, csvReader *csv.Reader) {
+func readIntoDatabase(db *CsvExtract, csvReader *csv.Reader) {
     readHeaderIntoDb(db, csvReader)
     readRecordsIntoDb(db, csvReader)
 
 }
-func readHeaderIntoDb(db *GeodanDB, csvReader *csv.Reader) {
+func readHeaderIntoDb(db *CsvExtract, csvReader *csv.Reader) {
     header, err := csvReader.Read()
     if err == io.EOF {
         log.Print("WARN, could not read HEADER")
@@ -46,7 +46,7 @@ func readHeaderIntoDb(db *GeodanDB, csvReader *csv.Reader) {
     }
 }
 
-func readRecordsIntoDb(db *GeodanDB, csvReader *csv.Reader) {
+func readRecordsIntoDb(db *CsvExtract, csvReader *csv.Reader) {
     for {
         //log.Print("length of ", len(db.Records), cap(db.Records))
         record, err := csvReader.Read()
