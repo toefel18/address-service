@@ -26,6 +26,8 @@
 -- lat        53.311231855738
 -- long       6.86450306650747
 
+-- test instance with docker:
+-- docker run --name address-service-go-postgres -p 5432:5432 -e POSTGRES_DB=addressservice -e POSTGRES_PASSWORD=root -d postgres
 
 CREATE TABLE addressesnetherlands (
   aobjectid VARCHAR(16) PRIMARY KEY NOT NULL,
