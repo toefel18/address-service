@@ -1,32 +1,32 @@
 package geodan
 
 type AddressNL struct {
-    aobjectid  string
-    kixcode    string
-    nraandid   string
-    oruimteid  string
-    straat     string
-    huisnummer int
-    huisletter string
-    huisnrtoev string
-    postcode   string
-    wnpcode    string
-    woonplaats string
-    gemcode    string
-    gemeente   string
-    provcode   string
-    provincie  string
-    buurtcode  string
-    buurtnr    int
-    straatnen  string
-    aotype     string
-    status     string
-    oppvlakte  int
-    gebrksdoel string
-    x_rd       float64
-    y_rd       float64
-    lat        float64
-    long       float64
+    Aobjectid  string
+    Kixcode    string
+    Nraandid   string
+    Oruimteid  string
+    Straat     string
+    Huisnummer int
+    Huisletter string
+    Huisnrtoev string
+    Postcode   string
+    Wnpcode    string
+    Woonplaats string
+    Gemcode    string
+    Gemeente   string
+    Provcode   string
+    Provincie  string
+    Buurtcode  string
+    Buurtnr    int
+    Straatnen  string
+    Aotype     string
+    Status     string
+    Oppvlakte  int
+    Gebrksdoel string
+    X_rd       float64
+    Y_rd       float64
+    Lat        float64
+    Long       float64
 }
 
 type AddressesNLDao interface {

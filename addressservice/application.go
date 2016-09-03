@@ -8,13 +8,13 @@ import (
 )
 
 func main() {
-	dao, err := postgres.NewDao("postgres://postgres:root@localhost:5433/postgres?sslmode=disable")
+	dao, err := postgres.NewDao("postgres://postgres:root@localhost:5432/postgres?sslmode=disable")
 	if err != nil {
 		fmt.Println("Could not open database connection")
 		return
 	}
 	fmt.Println(dao.AddressCount())
-	//fmt.Println(dao.AddressByKixcode("NL4576AB000006X"))
+	fmt.Println(dao.AddressByKixcode("NL4576AB000006X"))
 
 	//postgres.Import("/home/hestersco/adressen_latlong_201507_landelijk.csv")
 	//geodan := geodan.CreateFromFile("/home/hestersco/adressen_latlong_201507_landelijk.csv")

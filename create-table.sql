@@ -59,4 +59,8 @@ CREATE TABLE addressesnetherlands (
   long DOUBLE PRECISION
 );
 
-CREATE INDEX index_addr_kixcode ON AddressesNetherlands (kixcode, postcode, huisnummer)
+CREATE INDEX index_addr_kixcode ON AddressesNetherlands (kixcode);
+CREATE INDEX index_addr_postcode ON AddressesNetherlands (postcode);
+CREATE INDEX index_addr_huisnummer ON AddressesNetherlands (huisnummer);
+
+ALTER TABLE addressesnetherlands ADD CONSTRAINT kixcode_unique UNIQUE (kixcode);
