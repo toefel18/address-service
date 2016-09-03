@@ -28,6 +28,7 @@
 
 -- test instance with docker:
 -- docker run --name address-service-go-postgres -p 5432:5432 -e POSTGRES_DB=addressservice -e POSTGRES_PASSWORD=root -d postgres
+-- sudo docker run --name address-service-go-postgres -p 5432:5432 -v /opt/address-service-pgdata:/var/lib/postgresql/data:rw -e POSTGRES_PASSWORD=root -d postgres
 
 CREATE TABLE addressesnetherlands (
   aobjectid VARCHAR(16) PRIMARY KEY NOT NULL,

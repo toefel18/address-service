@@ -14,7 +14,7 @@ type CsvExtract struct {
 	Addresses []Address
 }
 
-func NewDatabase() *CsvExtract {
+func NewCsvExtract() *CsvExtract {
 	return &CsvExtract{Headers: make(map[string]int)}
 }
 

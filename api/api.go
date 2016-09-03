@@ -10,6 +10,7 @@ func Publish(db *geodan.CsvExtract) {
 	router := gin.Default()
 	router.GET( "/v1/addresses/:kixcode", v1.AddressByKixcode(db))
 	router.POST("/v1/addresses/search", v1.MultipleAddresses(db))
+	router.GET("/v2/addresses")
 	router.Run(":8888")
 
 }

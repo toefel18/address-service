@@ -30,7 +30,7 @@ func Import(filename string)  {
 func ImportFromReader(reader io.Reader) {
     csvReader := csv.NewReader(bufio.NewReader(reader))
     csvReader.Comma = ';'
-    csvExtract := geodan.NewDatabase()
+    csvExtract := geodan.NewCsvExtract()
     readIntoDatabase(csvExtract, csvReader)
 }
 

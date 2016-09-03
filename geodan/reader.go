@@ -25,7 +25,7 @@ func CreateFromFile(filename string) *CsvExtract {
 func CreateFromReader(reader io.Reader) *CsvExtract {
     csvReader := csv.NewReader(bufio.NewReader(reader))
     csvReader.Comma = ';'
-    db := NewDatabase()
+    db := NewCsvExtract()
     readIntoDatabase(db, csvReader)
     return db
 }
