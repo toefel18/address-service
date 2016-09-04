@@ -5,6 +5,7 @@ import (
 	//"github.com/toefel18/address-service/api"
 	"github.com/toefel18/address-service/geodan/postgres"
 	"fmt"
+	"github.com/toefel18/address-service/api"
 )
 
 func main() {
@@ -13,10 +14,6 @@ func main() {
 		fmt.Println("Could not open database connection")
 		return
 	}
-	fmt.Println(dao.AddressCount())
-	fmt.Println(dao.AddressByKixcode("NL4576AB000006X"))
-
 	//postgres.Import("/home/hestersco/adressen_latlong_201507_landelijk.csv")
-	//geodan := geodan.CreateFromFile("/home/hestersco/adressen_latlong_201507_landelijk.csv")
-	//api.Publish(geodan)
+	api.Publish(dao)
 }

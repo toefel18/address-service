@@ -11,14 +11,14 @@ type KixcodeAndType struct {
 	KixCodeType string `json:"type"`
 }
 
-func AddressByKixcode(db *geodan.CsvExtract) func(c *gin.Context) {
+func AddressByKixcode(db geodan.AddressesNLDao) func(c *gin.Context) {
 	return func(c *gin.Context) {
 		kixcode := c.Param("kixcode")
 		c.JSON(http.StatusOK, createResult(db, kixcode))
 	}
 }
 
-func MultipleAddresses(db *geodan.CsvExtract) func(ctx *gin.Context) {
+func MultipleAddresses(db geodan.AddressesNLDao) func(ctx *gin.Context) {
     return func(c *gin.Context) {
         data := make([]string,0)
         c.BindJSON(&data)
@@ -31,11 +31,15 @@ func MultipleAddresses(db *geodan.CsvExtract) func(ctx *gin.Context) {
 }
 
 
-func createResult(db *geodan.CsvExtract, kixcode string) KixcodeAndType {
+func createResult(db geodan.AddressesNLDao, kixcode string) KixcodeAndType {
 	kixcodeType := geodan.BUSINESS
-	address, err := db.FindByKixcode(kixcode)
+	address, err := db.AddressByKixcode(kixcode)
 	if err == nil {
-		kixcodeType = address.Type()
+		if address.Gebrksdoel == "woonfunctie" {
+			kixcodeType = "2C"
+		} else {
+			kixcodeType = "2B"
+		}
 	}
 	return KixcodeAndType{kixcode, kixcodeType}
 }
