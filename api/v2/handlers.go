@@ -11,7 +11,13 @@ func GetAllAddressesSummary(dao geodan.AddressesNLDao) func(c *gin.Context) {
         if error != nil {
             c.AbortWithError(500, error)
         } else {
-            c.JSON(200, gin.H{"totalAddresses": count})
+            postcodeQuery := c.Query("postcode")
+            if postcodeQuery == "" {
+                c.IndentedJSON(200, gin.H{"totalAddresses": count})
+            } else {
+                dao.
+                //c.IndentedJSON(200)
+            }
         }
     }
 }
@@ -22,8 +28,11 @@ func GetAddressByKixcode(dao geodan.AddressesNLDao) func(c *gin.Context) {
         address, error := dao.AddressByKixcode(kixcode)
         if error != nil {
             c.AbortWithError(500, error)
+        } else if address.Aobjectid == "" {
+            c.String(404, "no address found with kixcode %v", kixcode)
         } else {
-            c.JSON(200, address)
+            c.IndentedJSON(200, address)
         }
     }
 }
+

@@ -14,7 +14,7 @@ type KixcodeAndType struct {
 func AddressByKixcode(db geodan.AddressesNLDao) func(c *gin.Context) {
 	return func(c *gin.Context) {
 		kixcode := c.Param("kixcode")
-		c.JSON(http.StatusOK, createResult(db, kixcode))
+		c.IndentedJSON(http.StatusOK, createResult(db, kixcode))
 	}
 }
 
@@ -26,7 +26,7 @@ func MultipleAddresses(db geodan.AddressesNLDao) func(ctx *gin.Context) {
         for _, kixcode := range data {
             kixTypeArray = append(kixTypeArray, createResult(db, kixcode))
         }
-        c.JSON(http.StatusOK, kixTypeArray)
+        c.IndentedJSON(http.StatusOK, kixTypeArray)
     }
 }
 

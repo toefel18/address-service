@@ -6,9 +6,6 @@ import (
 	"strings"
 )
 
-const BUSINESS = "2B"
-const CUSTOMER = "2C"
-
 type CsvExtract struct {
 	Headers   map[string]int
 	Addresses []Address

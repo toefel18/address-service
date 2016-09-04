@@ -14,6 +14,7 @@ func main() {
 		fmt.Println("Could not open database connection")
 		return
 	}
+	fmt.Println("Publishing API")
 	//postgres.Import("/home/hestersco/adressen_latlong_201507_landelijk.csv")
 	api.Publish(dao)
 }
