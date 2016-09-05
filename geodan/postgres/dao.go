@@ -73,7 +73,7 @@ func (dao *Dao) AddressesByQuery(postcode string, huisnummer int, huisletter str
 	return dao.scanRowsAsAddresses(rows)
 }
 
-func (dao *Dao) scanRowsAsAddresses(rows sql.Rows) ([]geodan.AddressNL, error) {
+func (dao *Dao) scanRowsAsAddresses(rows *sql.Rows) ([]geodan.AddressNL, error) {
 	addresses := make([]geodan.AddressNL, 0)
 	for rows.Next() {
 		address := geodan.AddressNL{}

@@ -11,13 +11,12 @@ func GetAllAddressesSummary(dao geodan.AddressesNLDao) func(c *gin.Context) {
         if error != nil {
             c.AbortWithError(500, error)
         } else {
-            postcodeQuery := c.Query("postcode")
-            if postcodeQuery == "" {
+            //postcodeQuery := c.Query("postcode")
+            //if postcodeQuery == "" {
                 c.IndentedJSON(200, gin.H{"totalAddresses": count})
-            } else {
-                dao.
-                //c.IndentedJSON(200)
-            }
+            //} else {
+            //    c.IndentedJSON(200)
+            //}
         }
     }
 }
