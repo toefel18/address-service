@@ -11,6 +11,7 @@ import (
 
 func Publish(db geodan.AddressesNLDao) {
     areaStore := &area.AreaStore{}
+
     router := gin.Default()
     router.GET("/v1/addresses/:kixcode", v1.AddressByKixcode(db, areaStore))
     router.POST("/v1/addresses/search", v1.MultipleAddresses(db, areaStore))

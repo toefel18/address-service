@@ -15,6 +15,5 @@ func main() {
 		return
 	}
 	fmt.Println("Publishing API")
-	//postgres.Import("/home/hestersco/adressen_latlong_201507_landelijk.csv")
 	api.Publish(dao)
 }
